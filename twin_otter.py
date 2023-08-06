@@ -52,6 +52,8 @@ for i in range(1, 844):
         status_tags = soup.find_all('a', class_='sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element')
         status = status_tags[-1].text.strip()
 
+        registration = registration.replace('"', '')
+
         msn_list.append(msn)
         registration_list.append(registration)
         status_list.append(status)
@@ -82,6 +84,8 @@ for i in range(845, 995):
         msn = soup.find('h2', style='white-space:pre-wrap;').text
         registration = soup.find('h2', style='text-align:right;white-space:pre-wrap;').text.split()[0]
         status = soup.find('a', class_='sqs-block-button-element--large sqs-button-element--secondary sqs-block-button-element').text.strip()
+
+        registration = registration.replace('"', '')
 
         msn_list.append(msn)
         registration_list.append(registration)
@@ -116,6 +120,3 @@ filename = f'twin_otter_scraped_{today_date}.xlsx'
 
 # Export the updated DataFrame to an Excel file with the generated filename
 df.to_excel(filename, index=False)
-
-
-abadfbadfadfa
